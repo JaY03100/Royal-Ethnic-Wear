@@ -1,0 +1,169 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+  --burgundy: #5B1F2A;
+  --deep-maroon: #6D1F31;
+  --matte-black: #121212;
+  --ivory: #F8F4EC;
+  --antique-gold: #C8A96B;
+  --gold-light: #E2C88A;
+  --gold-dark: #A07840;
+  --charcoal: #1E1E1E;
+  --warm-gray: #2A2A2A;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--matte-black);
+  color: var(--ivory);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+.font-playfair {
+  font-family: 'Playfair Display', serif;
+}
+
+.font-cormorant {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+/* Gold gradient text */
+.text-gold-gradient {
+  background: linear-gradient(135deg, var(--gold-light) 0%, var(--antique-gold) 40%, var(--gold-dark) 70%, var(--antique-gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Luxury border */
+.border-gold {
+  border-color: var(--antique-gold);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--matte-black);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--antique-gold);
+  border-radius: 3px;
+}
+
+/* Noise overlay texture */
+.texture-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Gold shimmer animation */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, var(--antique-gold) 0%, var(--gold-light) 50%, var(--antique-gold) 100%);
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Ornamental divider */
+.ornament-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.ornament-divider::before,
+.ornament-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--antique-gold), transparent);
+}
+
+/* Product card hover */
+.product-card {
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.product-card:hover {
+  transform: translateY(-6px);
+}
+
+/* Nav glass effect */
+.nav-glass {
+  background: rgba(18, 18, 18, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(200, 169, 107, 0.15);
+}
+
+/* Button primary */
+.btn-primary {
+  background: linear-gradient(135deg, var(--burgundy), var(--deep-maroon));
+  border: 1px solid var(--antique-gold);
+  color: var(--ivory);
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  transition: all 0.3s ease;
+}
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--deep-maroon), var(--burgundy));
+  box-shadow: 0 0 20px rgba(200, 169, 107, 0.3);
+}
+
+/* Gold button */
+.btn-gold {
+  background: linear-gradient(135deg, var(--antique-gold), var(--gold-dark));
+  color: var(--matte-black);
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.btn-gold:hover {
+  box-shadow: 0 0 25px rgba(200, 169, 107, 0.5);
+  transform: translateY(-1px);
+}
+
+/* Input style */
+.input-luxury {
+  background: rgba(248, 244, 236, 0.05);
+  border: 1px solid rgba(200, 169, 107, 0.3);
+  color: var(--ivory);
+  transition: all 0.3s ease;
+}
+.input-luxury:focus {
+  outline: none;
+  border-color: var(--antique-gold);
+  background: rgba(248, 244, 236, 0.08);
+  box-shadow: 0 0 15px rgba(200, 169, 107, 0.15);
+}
+.input-luxury::placeholder {
+  color: rgba(248, 244, 236, 0.35);
+}
